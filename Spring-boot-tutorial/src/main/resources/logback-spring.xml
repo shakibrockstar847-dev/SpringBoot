@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" debug="true">
+
+ <!-- The filename should be exactly the same name it is very important -->
+
+    <!-- ========================================================= -->
+    <!-- LOG FILE LOCATION -->
+    <!-- ========================================================= -->
+    <property name="LOG_PATH" value="C:/2025/ActualProjects/Sprin-Boot" />
+    <property name="APP_NAME" value="spring-boot-app" />
+
+    <!-- ========================================================= -->
+    <!-- COMMON LOG PATTERN -->
+    <!-- ========================================================= -->
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- ========================================================= -->
+    <!-- GENERIC FILE APPENDER (ALL LOGS) -->
+    <!-- ========================================================= -->
+    <appender name="GENERIC_FILE_APPENDER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!-- Base log file -->
+        <file>${LOG_PATH}/${APP_NAME}.log</file>
+
+        <!-- Daily rollover -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ========================================================= -->
+    <!-- CONSOLE APPENDER -->
+    <!-- ========================================================= -->
+    <appender name="CONSOLE"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ========================================================= -->
+    <!-- ROOT LOGGER (CATCH ALL) -->
+    <!-- ========================================================= -->
+    <root level="INFO">
+        <appender-ref ref="GENERIC_FILE_APPENDER"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

@@ -2,6 +2,8 @@ package com.dailycodebuffer.Springboot.tutorial.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,13 +24,16 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
 	
+	//SLF4J is an abstraction layer for logging, while logback is the concreate implementation, we can use different logging implementation if we want by adding the proper dependency
+	private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+	
 	
 	//Without this @RequestBody we had to use jackson jar to convert json data to java object but now it is done automatically by @RequestBody annotation
 	// With the help of below valid annotation we would be able to connect it with the hibernate validation which we have added in our entity
 	//So it would be able to check those validation only because of the @Valid
 	@PostMapping("/departments")
 	public Department saveDepartment(@Valid @RequestBody Department department) {
-	
+	LOGGER.info("Inside saveDepartment() of department controller");
 	return departmentService.saveDepartment(department);
 		
 	}
@@ -36,7 +41,7 @@ public class DepartmentController {
 	
 	@GetMapping("/departments")
 	public List<Department> fetchDepartmentList() {
-	
+		LOGGER.info("Inside save ftechdepartmentList() of department controller");	
 	return departmentService.fetchDepartmentList();
 		
 	}
