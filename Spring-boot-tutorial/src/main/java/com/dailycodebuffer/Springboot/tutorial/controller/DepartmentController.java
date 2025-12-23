@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dailycodebuffer.Springboot.tutorial.entity.Department;
 import com.dailycodebuffer.Springboot.tutorial.service.DepartmentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class DepartmentController {
 
@@ -22,8 +24,10 @@ public class DepartmentController {
 	
 	
 	//Without this @RequestBody we had to use jackson jar to convert json data to java object but now it is done automatically by @RequestBody annotation
+	// With the help of below valid annotation we would be able to connect it with the hibernate validation which we have added in our entity
+	//So it would be able to check those validation only because of the @Valid
 	@PostMapping("/departments")
-	public Department saveDepartment(@RequestBody Department department) {
+	public Department saveDepartment(@Valid @RequestBody Department department) {
 	
 	return departmentService.saveDepartment(department);
 		
