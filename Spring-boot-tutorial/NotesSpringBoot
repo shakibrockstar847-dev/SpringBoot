@@ -1,0 +1,9 @@
+##Only these two deendencies were added to the start:-
+1) Spring web is the base dependency as we will be using the rest api here
+2) H2 - inmemory databse
+
+##After as we were encountering starting and stopping server so we will addd dev tools dependencies which will auto detect most of the changes do
+1) Spring dev tools
+
+##Before start using the H2 databse he told to add spring data jpa as dependency in the project
+1) Sprin data jpa
