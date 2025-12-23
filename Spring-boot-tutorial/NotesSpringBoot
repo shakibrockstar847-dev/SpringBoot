@@ -7,3 +7,6 @@
 
 ##Before start using the H2 databse he told to add spring data jpa as dependency in the project
 1) Sprin data jpa
+
+##For validation in entity file he added a new dependency
+1) Springbootstartervalidation
