@@ -31,6 +31,16 @@ spring:
 
 welcome:
   message: Welcome to daily code buffer
+  
+#Writing actuator to only dev as it is currently active
+#We can also give health, infor instaed of *
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" 
+        #This is how we can exclude the endpoints also in actuator
+        exclude: "env,beans" 
 
 ---
 #We did different db config for qa

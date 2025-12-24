@@ -27,3 +27,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=LOCAL
 2)By using the spring.active.profile=dev or local directly inside your application.properties file and the name of the file would be normal ie application.properties
 -->Mostly 1st method is preferred y the company more.
 -->Basically we have multiple db configuration for each profile so we have tried demonstrating that using @Profiles in application.yml
+
+
+#Now he has added another dependency for actuator
+1)spring-boot-starter-actuator
