@@ -5,8 +5,25 @@
 ##After as we were encountering starting and stopping server so we will addd dev tools dependencies which will auto detect most of the changes do
 1) Spring dev tools
 
+##Only above 2 dependencies he added to start with then later he added the below dependencies
+
 ##Before start using the H2 databse he told to add spring data jpa as dependency in the project
 1) Sprin data jpa
 
 ##For validation in entity file he added a new dependency
 1) Springbootstartervalidation
+
+##We have added another dependency for spring junit test which is
+1)spring-boot-starter-test
+
+##There can be many ways we can bifercate the external application.properties bases on different profiles
+1) By using the separate name altogether for application.properties file ie application-LOCAL.properties or application-Dev.properties and sending the details using
+i). Command line (most common)
+java -jar your-app.jar --spring.profiles.active=LOCAL
+
+ii). Maven (Spring Boot plugin)
+mvn spring-boot:run -Dspring-boot.run.profiles=LOCAL
+
+2)By using the spring.active.profile=dev or local directly inside your application.properties file and the name of the file would be normal ie application.properties
+-->Mostly 1st method is preferred y the company more.
+-->Basically we have multiple db configuration for each profile so we have tried demonstrating that using @Profiles in application.yml

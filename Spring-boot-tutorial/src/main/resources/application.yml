@@ -1,16 +1,81 @@
+#Basically we have multiple db configuration for each profile so we have tried demonstrating that using @Profiles
+server:
+  port: 8082
+
+#Even after giving the environment profile value here we can stilloverride it in the cmd if we want to while running this jar file
 spring:
+  profiles:
+    active: dev
+
+---
+
+#We did different db config for Dev
+spring:
+  config:
+    activate:
+      on-profile: dev
+
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    url: jdbc:mysql://localhost:3306/dcbapp
     password: admin
+    url: jdbc:mysql://localhost:3306/dcbapp
+
   application:
     name: Spring-boot-tutorial
+
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: 'true'
+    show-sql: true
+
 welcome:
   message: Welcome to daily code buffer
-server:
-  port: '8082'
+
+---
+#We did different db config for qa
+spring:
+  config:
+    activate:
+      on-profile: qa
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: admin
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+
+  application:
+    name: Spring-boot-tutorial
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+welcome:
+  message: Welcome to daily code buffer
+
+---
+#We did different db config for Prod
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: admin
+    url: jdbc:mysql://localhost:3306/dcbapp-prod
+
+  application:
+    name: Spring-boot-tutorial
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+welcome:
+  message: Welcome to daily code buffer
